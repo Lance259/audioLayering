@@ -123,8 +123,8 @@ def crosssynth(lower_layer, higher_layer): #lower_layer = carrier, higher_layer 
     # apply inverse stft
     
     n_per_seg = 512
-    lower_layer = np.array(waveLayer2.get_layer('cello_mid'))
-    higher_layer = np.array(waveLayer2.get_layer('drums'))
+    #lower_layer = np.array(waveLayer2.get_layer('cello_mid'))
+    #higher_layer = np.array(waveLayer2.get_layer('drums'))
     
     length = np.max([lower_layer.shape[0], higher_layer.shape[0]])
     lower_layer = np.pad(lower_layer, ((0,length - lower_layer.shape[0]),(0,0)), 'constant')
@@ -155,6 +155,7 @@ def crosssynth(lower_layer, higher_layer): #lower_layer = carrier, higher_layer 
 
     
 
+#%%
 #################### MAIN PROGRAM ####################
 
 
