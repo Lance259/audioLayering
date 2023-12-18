@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#%%
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -141,7 +142,7 @@ def crosssynth(lower_layer, higher_layer): #lower_layer = carrier, higher_layer 
     modulator[1] = normalize(modulator[1])
     Modulator_f, Modulator_t, Modulator_Zxx = stft(modulator, samplerate, window='hann', nperseg=n_per_seg)
     
-    Modulated_stft = np.zeros((Carrier_Zxx.shape), dtype=np.complex256)
+    Modulated_stft = np.zeros((Carrier_Zxx.shape), dtype=np.complex128)
     for channel in range(2):
         for timeslice in range(Carrier_Zxx.shape[1]):        
             Modulated_stft[channel][timeslice] = Carrier_Zxx[channel][timeslice] * Modulator_Zxx[channel][timeslice]
@@ -161,9 +162,9 @@ def crosssynth(lower_layer, higher_layer): #lower_layer = carrier, higher_layer 
 
 
     
-audio_files = ['/home/lhinz/Documents/python_tools/audioLayering/audio/0_Drum1.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/Pali_nochNieErlebt.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/Pali_stickOderBag.wav']    
+audio_files = ['audio/0_Drum1.wav',
+               'audio/Pali_nochNieErlebt.wav',
+               'audio/Pali_stickOderBag.wav']    
 samplerate = 44100
 
        
@@ -193,11 +194,11 @@ waveLayer1.export()
 #%%
 
 # cello mit drums multiplizieren? 
-audio_files = ['/home/lhinz/Documents/python_tools/audioLayering/audio/0_Drum1.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/Pali_nochNieErlebt.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/Pali_stickOderBag.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/01_C3_bowed_long_vibrato.wav',
-               '/home/lhinz/Music/SuperCollider/samples/samples/samples-cello-bowed/07_C5_bowed_long.wav']    
+audio_files = ['audio/0_Drum1.wav',
+               'audio/Pali_nochNieErlebt.wav',
+               'audio/Pali_stickOderBag.wav',
+               'audio/01_C3_bowed_long_vibrato.wav',
+               'audio/07_C5_bowed_long.wav']    
 samplerate = 44100
 
 waveLayer2 = waveLayer(samplerate=samplerate)
@@ -214,11 +215,11 @@ waveLayer2.export('export2.wav')
 
 
 # cello mit drums multiplizieren? 
-audio_files = ['/home/lhinz/Documents/python_tools/audioLayering/audio/0_Drum1.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/Pali_nochNieErlebt.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/Pali_stickOderBag.wav',
-               '/home/lhinz/Documents/python_tools/audioLayering/audio/01_C3_bowed_long_vibrato.wav',
-               '/home/lhinz/Music/SuperCollider/samples/samples/samples-cello-bowed/07_C5_bowed_long.wav']    
+audio_files = ['audio/0_Drum1.wav',
+               'audio/Pali_nochNieErlebt.wav',
+               'audio/Pali_stickOderBag.wav',
+               'audio/01_C3_bowed_long_vibrato.wav',
+               'audio/07_C5_bowed_long.wav']    
 samplerate = 44100
 
 
@@ -227,3 +228,6 @@ waveLayer3.add_layer(audio_files[0], 'drum', 0.5, add)
 waveLayer3.add_layer(audio_files[1], 'nieErlebt', 0.5, crosssynth)
 waveLayer3.render()
 waveLayer3.export('export3.wav')
+
+#%%
+
