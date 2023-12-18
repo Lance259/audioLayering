@@ -85,7 +85,7 @@ class waveLayer:
         return self.audio_layers[self.names[name]]
     
     #def pan(name, pan) #pan between -1 (left) and 1 (right)
-    
+    #def gain #volume change
     
 
 ###################### BLEND MODES #######################
